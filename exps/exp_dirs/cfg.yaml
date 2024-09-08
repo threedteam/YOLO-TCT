@@ -1,0 +1,36 @@
+cache: False
+save_json: True
+seed: 3407
+conf: 0.225
+# 2024年5月29日16:24:13 根据R-curve微调
+# 2024年7月30日20:52:52 召回率太高了，把阈值调高一点以降低假阳性数量（0.225->0.3）
+# 2024年8月1日12:21:31 改回0.225
+iou: 0.45
+agnostic_nms: False
+max_det: 2000 # 2024年5月16日15:06:50 BACL建议将NMS建议数量提到2000
+lr0: 0.001 # 2024年5月24日17:58:09 从1e-2改成1e-3
+lrf: 0.00001
+momentum: 0.937
+weight_decay: 0.00005 # 2024年5月26日18:28:49：v10配置改成5e-4
+warmup_epochs: 3.0
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+# 2024年5月29日18:32:17 调整权重以突出分类准确率的重要性
+box: 1
+cls: 2 # 2024年7月30日20:50:24 2->4 4->8 8->2
+dfl: 1
+# end
+
+pose: 12.0
+kobj: 1.0
+label_smoothing: 0.1
+nbs: 64
+dropout: 0.1 # 2024年5月16日15:22:58 增加dropout机制减轻过拟合
+# augmentation
+scale: 0.9
+mosaic: 1.0
+mixup: 0.15
+copy_paste: 0.3
+erasing: 0.4 # 2024年5月16日15:28:06 从0.2调整为0.4 增强泛化能力
+crop_fraction: 1.0
